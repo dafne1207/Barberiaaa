@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Elige tu bebida</title>
+</head>
+<body style="background: url('imagenes/fondo-barberos.jpeg') no-repeat center center fixed; background-size: cover; font-family: Arial; color: white; text-align: center; padding: 40px;">
+
+  <h1 style="font-size: 45px; color: #ad0000;">🍹 ELIGE TU BEBIDA</h1>
+  <p style="font-size: 20px;">Una bebida refrescante mientras te renuevas 💈</p>
+
+ <form id="formBebidas">
+  <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+    <!-- Cerveza -->
+    <label>
+      <input type="radio" name="bebida" value="cerveza" required hidden>
+      <div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 15px; width: 200px; box-shadow: 0 0 15px black;">
+        <img src="imagenes/cerveza.png" alt="Cerveza" width="150" onclick="seleccionar(this)">
+        <p><b>Cerveza</b><br>Bien fría y espumosa 🍺</p>
+      </div>
+    </label>
+
+    <!-- Whisky -->
+    <label>
+      <input type="radio" name="bebida" value="whisky" hidden>
+      <div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 15px; width: 200px; box-shadow: 0 0 15px black;">
+        <img src="imagenes/whisky.png" alt="Whisky" width="150" onclick="seleccionar(this)">
+        <p><b>Whisky</b><br>Para un gusto más fino 🥃</p>
+      </div>
+    </label>
+
+    <!-- Mojito -->
+    <label>
+      <input type="radio" name="bebida" value="mojito" hidden>
+      <div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 15px; width: 200px; box-shadow: 0 0 15px black;">
+        <img src="imagenes/mojito.png" alt="Mojito" width="150" onclick="seleccionar(this)">
+        <p><b>Mojito</b><br>Fresco y con menta 🍃</p>
+      </div>
+    </label>
+  </div>
+
+  <br><br>
+  <button type="submit" style="padding: 12px 30px; font-size: 18px; font-weight: bold; border: none; border-radius: 10px; background-color: gold; color: black; cursor: pointer;">
+    CONTINUAR
+  </button>
+</form>
+
+<script>
+  function seleccionar(img) {
+    let imagenes = document.querySelectorAll("form img");
+    imagenes.forEach(imagen => imagen.style.border = "none");
+    img.style.border = "4px solid gold";
+  }
+
+  document.getElementById("formBebidas").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Obtener el barbero desde la URL
+    const params = new URLSearchParams(window.location.search);
+    const barbero = params.get("barbero") || "No especificado";
+    // Obtener la bebida seleccionada
+    const bebida = document.querySelector('input[name="bebida"]:checked').value;
+
+    // Redirigir a ticket.html con los parámetros de barbero y bebida
+    window.location.href = "ticketpremium.html?barbero=" + encodeURIComponent(barbero) + "&bebida=" + encodeURIComponent(bebida);
+  });
+</script>
+
+
+  <script>
+    function seleccionar(img) {
+      let imagenes = document.querySelectorAll("form img");
+      imagenes.forEach(imagen => imagen.style.border = "none");
+      img.style.border = "4px solid gold";
+    }
+  </script>
+
+</body>
+</html>

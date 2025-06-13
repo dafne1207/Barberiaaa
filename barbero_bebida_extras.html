@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Selecciona tu barbero</title>
+</head>
+<body background="imagenes/fondo-barberos.jpeg" text="white" style="background-size: cover; background-repeat: no-repeat; background-attachment: fixed; margin: 0; padding: 0;">
+
+  <center>
+    <h1>
+      <font face="Arial Black" size="6" color="#ad0000">
+        ELIGE A TU BARBERO
+      </font>
+    </h1>
+
+    <form action="bebidasvip.html" method="get" onsubmit="guardarBarbero()">
+      <table border="0" cellpadding="20">
+        <tr>
+          <!-- Miguel -->
+          <td align="center" style="background-color: rgba(0,0,0,0.5); box-shadow: 0 0 15px black; border-radius: 10px;">
+            <label>
+              <input type="radio" name="barbero" value="Miguel" required hidden>
+              <img src="imagenes/miguel.png" alt="Miguel" width="200" onclick="seleccionar(this)" style="border-radius: 10px;"><br>
+              <font face="Arial" size="3"><b>Miguel</b><br>Especialista en cortes clásicos y barba alineada</font>
+            </label>
+          </td>
+
+          <!-- José -->
+          <td align="center" style="background-color: rgba(0,0,0,0.5); box-shadow: 0 0 15px black; border-radius: 10px;">
+            <label>
+              <input type="radio" name="barbero" value="José" hidden>
+              <img src="imagenes/jose.png" alt="José" width="200" onclick="seleccionar(this)" style="border-radius: 10px;"><br>
+              <font face="Arial" size="3"><b>José</b><br>Experto en fades modernos y estilo urbano</font>
+            </label>
+          </td>
+
+          <!-- Luis -->
+          <td align="center" style="background-color: rgba(0,0,0,0.5); box-shadow: 0 0 15px black; border-radius: 10px;">
+            <label>
+              <input type="radio" name="barbero" value="Luis" hidden>
+              <img src="imagenes/luis.png" alt="Luis" width="200" onclick="seleccionar(this)" style="border-radius: 10px;"><br>
+              <font face="Arial" size="3"><b>Luis</b><br>Maestro en diseños con navaja y cortes artísticos</font>
+            </label>
+          </td>
+        </tr>
+      </table>
+
+      <br><br>
+      <button type="submit" style="padding: 10px 25px; font-size: 18px; font-family: 'Arial Black'; background-color: gold; color: black; border: none; border-radius: 8px; cursor: pointer;">
+        CONTINUAR
+      </button>
+    </form>
+
+    <script>
+      function seleccionar(img) {
+        let imagenes = document.querySelectorAll("form img");
+        imagenes.forEach(imagen => imagen.style.border = "none");
+        img.style.border = "4px solid gold";
+      }
+
+      function guardarBarbero() {
+        const barberoSeleccionado = document.querySelector('input[name="barbero"]:checked').value;
+        localStorage.setItem("barbero", barberoSeleccionado);
+      }
+    </script>
+  </center>
+
+</body>
+</html>
